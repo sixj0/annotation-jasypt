@@ -1,6 +1,7 @@
 package com.sixj.aspect;
 
 import com.sixj.util.BeanUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -15,6 +16,7 @@ import java.util.Collection;
  */
 @Component
 @Aspect
+@Slf4j
 public class SetEncryptAspect {
 
 
@@ -24,6 +26,7 @@ public class SetEncryptAspect {
     @Around("@annotation(com.sixj.annotation.EnableEncrypt)")
     public Object doSetEncrypt(ProceedingJoinPoint point) throws Throwable{
         // 前置增强
+        log.info("前置增强");
 
         // 执行被切面的方法，获取结果集
         Object proceed = point.proceed();
